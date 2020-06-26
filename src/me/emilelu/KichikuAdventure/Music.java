@@ -14,7 +14,8 @@ public class Music {
 	private static int isEnd = 0;
 
 	static File f = new File("src/me/emilelu/KichikuAdventure");
-	static String path = f + "/GodKnows.mid";
+	static String gnPath = f + "/GodKnows.mid";
+	static String brPath = f + "/black_rose.mid";
 
 	public static int getIsEnd() {
 		return isEnd;
@@ -50,12 +51,24 @@ public class Music {
 	public static void main(String[] args) {
 
 		while (isEnd == 0) {
-			Music.Play(path);
+			Music.Play(gnPath);
 			long time = midi.getMicrosecondLength() / 1000;
 
 			try {
 				Thread.currentThread();
 				Thread.sleep(time);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			Music.Stop();
+
+			Music.Play(brPath);
+			long time1 = midi.getMicrosecondLength() / 1000;
+
+			try {
+				Thread.currentThread();
+				Thread.sleep(time1);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

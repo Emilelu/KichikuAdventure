@@ -66,10 +66,10 @@ public class Game {
 		/* Configure Map End */
 
 		/* BGM Configure Start */
-		System.out.println("\n[Music] Loading midi 'GodKnows.mid' from " + Music.path);
+		System.out.println("\n[Music] Loading midi 'GodKnows.mid','black_rose.mid' from " + Music.f);
 		playMusic play = new playMusic();
 		play.start();
-		System.out.println("[Music] Loaded. Playing now.\n现在，你可以开始移动了。\n");
+		System.out.println("[Music] Loaded 2 midis. Playing now.\n现在，你可以开始移动了。\n");
 		/* BGM Configure End */
 
 		/* Move Detection Start */
@@ -126,7 +126,7 @@ public class Game {
 				if (x > 7) {
 					System.err.println("你掉入了神秘法阵，传送到了地图的 (??,??)...无法获取...");
 					x = -5;
-					y = -4;
+					y = 3;
 				}
 				if (x < -7) {
 					System.out.println("你毫无征兆的失去了意识，当你再次醒来的时候...");
