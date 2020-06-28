@@ -941,6 +941,7 @@ public class Game {
 						bag.add("篮球");
 						you.setAttack(you.getAttack() + 30);
 						System.out.println("已加入背包！");
+						System.out.println("小贴士：本游戏的'格挡'与其字面意思略有差异，若战斗时格挡成功，则让对象的 HP 提升其格挡值，但不会超过其 HP 最大值。");
 					}
 				} else {
 					x++;
@@ -1109,7 +1110,7 @@ public class Game {
 								you.setAlive(false);
 							}
 							if (you.isAlive()) {
-								int isBlock = (int) (Math.random() * 5);
+								int isBlock = (int) (Math.random() * 8);
 								if (isBlock % 2 == 0) {
 									System.out.println(you.getName() + " 使用 篮球，对 " + guolaoshi.getName() + " 造成了 "
 											+ you.getAttack() + " 点伤害！但 " + guolaoshi.getName() + " 格挡了一部分伤害！");
@@ -1127,7 +1128,7 @@ public class Game {
 								System.exit(0);
 							}
 							if (guolaoshi.getHp() > 0) {
-								int isBlock = (int) (Math.random() * 5);
+								int isBlock = (int) (Math.random() * 8);
 								if (isBlock % 2 == 0) {
 									System.out.println(guolaoshi.getName() + " 现在的血量是 " + guolaoshi.getHp());
 									System.out.println(guolaoshi.getName() + " 对 " + you.getName() + " 造成了 "
@@ -1345,7 +1346,7 @@ public class Game {
 								you.setAlive(false);
 							}
 							if (you.isAlive()) {
-								int isBlock = (int) (Math.random() * 5);
+								int isBlock = (int) (Math.random() * 8);
 								if (isBlock % 2 == 0) {
 									System.out.println(you.getName() + " 使用 迷吼tiao，对 " + dygg.getName() + " 造成了 "
 											+ you.getAttack() + " 点伤害！但 " + dygg.getName() + " 格挡了一部分伤害！");
@@ -1363,7 +1364,7 @@ public class Game {
 								System.exit(0);
 							}
 							if (dygg.getHp() > 0) {
-								int isBlock = (int) (Math.random() * 5);
+								int isBlock = (int) (Math.random() * 8);
 								if (isBlock % 2 == 0) {
 									System.out.println(dygg.getName() + " 现在的血量是 " + dygg.getHp());
 									System.out.println(dygg.getName() + " 对 " + you.getName() + " 造成了 "
@@ -1694,7 +1695,7 @@ public class Game {
 							you.setAlive(false);
 						}
 						if (you.isAlive()) {
-							int isBlock = (int) (Math.random() * 5);
+							int isBlock = (int) (Math.random() * 8);
 							if (isBlock % 2 == 0) {
 								try {
 									Thread.sleep(100);
@@ -1717,7 +1718,7 @@ public class Game {
 							System.exit(0);
 						}
 						if (ylzz.getHp() > 0) {
-							int isBlock = (int) (Math.random() * 5);
+							int isBlock = (int) (Math.random() * 8);
 							if (isBlock % 2 == 0) {
 								try {
 									Thread.sleep(100);
@@ -1823,7 +1824,7 @@ public class Game {
 					// 前作：https://github.com/Emilelu/StrangeAdventure
 					// 但是有一位朋友给了我些想法，前作就因此合并入本游戏了！可以通过地图越界传送过去！
 					System.out.println(author.getName()
-							+ "：“现在你将会被传送回地图，但是地图上已经没有任何怪物以及NPC了。\n你只有两种选择：1.在地图上漫无目的地游荡 2.输入 exit 退出游戏”");
+							+ "：“现在你将会被传送回地图，但是地图上已经没有任何怪物以及NPC了。\n你只有三种选择：1.在地图上漫无目的地游荡 2.输入 exit 退出游戏 3.探索地图范围之外（四个方向有不同的彩蛋）”");
 					try {
 						Thread.sleep(2000);
 					} catch (InterruptedException e) {
@@ -1831,6 +1832,7 @@ public class Game {
 					}
 					Music.setIsEnd(1);
 					Music.Stop();
+					System.out.println("Playing last BGM now.");
 				}
 			}
 		} else {
