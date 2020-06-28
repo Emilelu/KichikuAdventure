@@ -511,7 +511,7 @@ public class Game {
 //					+ "                                     ?'ヽL__|___i,___,ン?|ノ\r\n"
 //					+ "                                                ?-,/  |___./\r\n"
 //					+ "                  '?'    !_,.:");
-// ↑Depreciated
+// ↑OLD WAY
 			System.out.println("..く__,.ヘヽ.        /  ,ー､ 〉..............\r\n"
 					+ "...........＼ ', !-─‐-i  /  /´.............\r\n" + "...........／｀ｰ'       L/／｀ヽ､.............\r\n"
 					+ "........./   ／,   /|   ,   ,       ',.......\r\n"
@@ -1825,14 +1825,7 @@ public class Game {
 					// 但是有一位朋友给了我些想法，前作就因此合并入本游戏了！可以通过地图越界传送过去！
 					System.out.println(author.getName()
 							+ "：“现在你将会被传送回地图，但是地图上已经没有任何怪物以及NPC了。\n你只有三种选择：1.在地图上漫无目的地游荡 2.输入 exit 退出游戏 3.探索地图范围之外（四个方向有不同的彩蛋）”");
-					try {
-						Thread.sleep(2000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					Music.setIsEnd(1);
-					Music.Stop();
-					System.out.println("Playing last BGM now.");
+
 				}
 			}
 		} else {

@@ -218,6 +218,7 @@ public class EasterEgg {
 																"\n.............................................");
 
 														Music.Stop();
+														Music.Stop();
 
 														try {
 															Thread.currentThread();
