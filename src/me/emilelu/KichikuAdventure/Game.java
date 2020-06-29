@@ -52,9 +52,9 @@ public class Game {
 		NPCs author = new NPCs("作者", -2, 4, true);
 
 		// Generate the Monsters on the map
-		Monsters caixukun = new Monsters("蔡徐坤", 20, 20, true, 5, 0, 4, 2);
-		Monsters guolaoshi = new Monsters("郭老师", 60, 60, true, 8, 10, 3, -3);
-		Monsters dygg = new Monsters("冬泳怪鸽", 233, 233, true, 12, 20, -4, -4);
+		Monsters caixukun = new Monsters("蔡徐坤", 120, 120, true, 8, 0, 4, 2);
+		Monsters guolaoshi = new Monsters("郭老师", 250, 250, true, 20, 10, 3, -3);
+		Monsters dygg = new Monsters("冬泳怪鸽", 444, 444, true, 40, 20, -4, -4);
 		Monsters ylzz = new Monsters("影流之主", 2333, 2333, true, 2500, 233, -5, 5);
 
 		// Generate Items
@@ -63,6 +63,14 @@ public class Game {
 		Weapons miHotel = new Weapons("迷吼tiao", 100, "外观酷似猕猴桃的炸弹，可以多次使用，可以让攻击力提升 50！");
 		Weapons bigSword = new Weapons("张牙舞爪大宝剑", 123, "外形像狼牙的大宝剑！可以让攻击力提升 123！");
 		Weapons gfsStick = new Weapons("爷爷的拐杖", 188, "爷爷祖传下来的拐杖！可以击退敌人 ? 米，可以让攻击力提升 188！");
+
+		// Add all the Weapons Objects into a list for battles
+		List<Weapons> weasum = new ArrayList<Weapons>();
+		weasum.add(dagger);
+		weasum.add(basketball);
+		weasum.add(miHotel);
+		weasum.add(bigSword);
+		weasum.add(gfsStick);
 		/* Configure Map End */
 
 		/* BGM Configure Start */
@@ -83,26 +91,26 @@ public class Game {
 			} else if (x <= 5 && x >= -5 && y <= 5 && y >= -5) {
 				if (moved.equals("w")) {
 					y++;
-					printDialogue(x, y, you, guideAngel1, guideAngel2, guideAngel3, guideAngel4, author, bag, hasCount,
-							caixukun, guolaoshi, dygg, ylzz, dagger, basketball, miHotel, bigSword, gfsStick);
+					printDialogue(x, y, you, guideAngel1, guideAngel2, guideAngel3, guideAngel4, author, bag, weasum,
+							hasCount, caixukun, guolaoshi, dygg, ylzz, dagger, basketball, miHotel, bigSword, gfsStick);
 					System.out.println("你现在的坐标是 " + "(" + x + "," + y + ")");
 					System.out.println("接下来该怎么走？");
 				} else if (moved.equals("s")) {
 					y--;
-					printDialogue(x, y, you, guideAngel1, guideAngel2, guideAngel3, guideAngel4, author, bag, hasCount,
-							caixukun, guolaoshi, dygg, ylzz, dagger, basketball, miHotel, bigSword, gfsStick);
+					printDialogue(x, y, you, guideAngel1, guideAngel2, guideAngel3, guideAngel4, author, bag, weasum,
+							hasCount, caixukun, guolaoshi, dygg, ylzz, dagger, basketball, miHotel, bigSword, gfsStick);
 					System.out.println("你现在的坐标是 " + "(" + x + "," + y + ")");
 					System.out.println("接下来该怎么走？");
 				} else if (moved.equals("a")) {
 					x--;
-					printDialogue(x, y, you, guideAngel1, guideAngel2, guideAngel3, guideAngel4, author, bag, hasCount,
-							caixukun, guolaoshi, dygg, ylzz, dagger, basketball, miHotel, bigSword, gfsStick);
+					printDialogue(x, y, you, guideAngel1, guideAngel2, guideAngel3, guideAngel4, author, bag, weasum,
+							hasCount, caixukun, guolaoshi, dygg, ylzz, dagger, basketball, miHotel, bigSword, gfsStick);
 					System.out.println("你现在的坐标是 " + "(" + x + "," + y + ")");
 					System.out.println("接下来该怎么走？");
 				} else if (moved.equals("d")) {
 					x++;
-					printDialogue(x, y, you, guideAngel1, guideAngel2, guideAngel3, guideAngel4, author, bag, hasCount,
-							caixukun, guolaoshi, dygg, ylzz, dagger, basketball, miHotel, bigSword, gfsStick);
+					printDialogue(x, y, you, guideAngel1, guideAngel2, guideAngel3, guideAngel4, author, bag, weasum,
+							hasCount, caixukun, guolaoshi, dygg, ylzz, dagger, basketball, miHotel, bigSword, gfsStick);
 					System.out.println("你现在的坐标是 " + "(" + x + "," + y + ")");
 					System.out.println("接下来该怎么走？");
 				} else {
@@ -314,9 +322,9 @@ public class Game {
 	// The Core Content of this game! DO NOT REMOVE!
 	@SuppressWarnings("resource")
 	public static void printDialogue(int x, int y, Player you, NPCs guideAngel1, NPCs guideAngel2, NPCs guideAngel3,
-			NPCs guideAngel4, NPCs author, List<String> bag, int hasCount, Monsters caixukun, Monsters guolaoshi,
-			Monsters dygg, Monsters ylzz, Weapons dagger, Weapons basketball, Weapons miHotel, Weapons bigSword,
-			Weapons gfsStick) {
+			NPCs guideAngel4, NPCs author, List<String> bag, List<Weapons> weasum, int hasCount, Monsters caixukun,
+			Monsters guolaoshi, Monsters dygg, Monsters ylzz, Weapons dagger, Weapons basketball, Weapons miHotel,
+			Weapons bigSword, Weapons gfsStick) {
 		if (x == author.getAtX() && y == author.getAtY() && author.isAlive() && !caixukun.isAlive()
 				&& !guolaoshi.isAlive() && !dygg.isAlive()) {
 			System.out.println(
@@ -536,7 +544,6 @@ public class Game {
 			System.out.println(guideAngel1.getName() + "：“听我一句劝，你最好不要跑出地图范围，否则到时候会很麻烦的~”");
 			System.out.println(guideAngel1.getName() + "：“总之，先收下这些吧！”");
 			bag.add(dagger.getName());
-			you.setAttack(you.getAttack() + 10);
 			System.out.println(
 					"获得新武器：" + dagger.getName() + "，攻击力：" + dagger.getAttack() + "，介绍：" + dagger.getIntroduction());
 			System.out.println(guideAngel1.getName() + "：“另外告诉你，我在地图上还有三个好姐妹，但是这个该死的作者设定了，你遇到我们当中其中一个后，剩下的都会瞬间去世。”");
@@ -623,7 +630,6 @@ public class Game {
 			System.out.println(guideAngel2.getName() + "：“听我一句劝，你最好不要跑出地图范围，否则到时候会很麻烦的~”");
 			System.out.println(guideAngel2.getName() + "：“总之，先收下这些吧！”");
 			bag.add(dagger.getName());
-			you.setAttack(you.getAttack() + 10);
 			System.out.println(
 					"获得新武器：" + dagger.getName() + "，攻击力：" + dagger.getAttack() + "，介绍：" + dagger.getIntroduction());
 			System.out.println(guideAngel2.getName() + "：“另外告诉你，我在地图上还有三个好姐妹，但是这个该死的作者设定了，你遇到我们当中其中一个后，剩下的都会瞬间去世。”");
@@ -709,7 +715,6 @@ public class Game {
 			System.out.println(guideAngel3.getName() + "：“一步登天的后果只有死路一条”");
 			System.out.println(guideAngel3.getName() + "：“总之，先收下这些吧！”");
 			bag.add(dagger.getName());
-			you.setAttack(you.getAttack() + 10);
 			System.out.println(
 					"获得新武器：" + dagger.getName() + "，攻击力：" + dagger.getAttack() + "，介绍：" + dagger.getIntroduction());
 			System.out.println(guideAngel3.getName() + "：“另外告诉你，我在地图上还有三个好姐妹，但是这个该死的作者设定了，你遇到我们当中其中一个后，剩下的都会瞬间去世。”");
@@ -791,7 +796,6 @@ public class Game {
 			System.out.println(guideAngel4.getName() + "：“一步登天的后果只有死路一条”");
 			System.out.println(guideAngel4.getName() + "：“总之，先收下这些吧！”");
 			bag.add(dagger.getName());
-			you.setAttack(you.getAttack() + 10);
 			System.out.println(
 					"获得新武器：" + dagger.getName() + "，攻击力：" + dagger.getAttack() + "，介绍：" + dagger.getIntroduction());
 			System.out.println(guideAngel4.getName() + "：“另外告诉你，我在地图上还有三个好姐妹，但是这个该死的作者设定了，你遇到我们当中其中一个后，剩下的都会瞬间去世。”");
@@ -920,36 +924,88 @@ public class Game {
 			System.out.println("你当前的血量是 " + you.getHp() + "，" + caixukun.getName() + " 的血量是 " + caixukun.getHp());
 			System.out.println("你选择——");
 			System.out.println("1.攻击 2.逃跑");
-			Scanner toCXK = new Scanner(System.in);
-			String toCXKR = toCXK.next();
-			if (toCXKR.equals("1")) {
-				getBag(bag, hasCount);
-				Scanner atcxk = new Scanner(System.in);
-				String atcxkR = atcxk.next();
-				if (atcxkR.equals("1")) {
-					System.out.println("你选择了匕首！");
-					System.out.println("战斗开始！");
-					while (caixukun.getHp() > 0) {
-						System.out.println(
-								you.getName() + " 使用 匕首，对 " + caixukun.getName() + " 造成了 " + you.getAttack() + " 点伤害！");
-						caixukun.setHp(caixukun.getHp() - you.getAttack());
-						System.out.println(caixukun.getName() + " 现在的血量是 " + caixukun.getHp());
-						System.out.println(caixukun.getName() + " 被打败了！");
-						caixukun.setAlive(false);
-						System.out.println(caixukun.getName() + " 掉落了武器： " + basketball.getName() + "，攻击力："
-								+ basketball.getAttack() + "，介绍：" + basketball.getIntroduction());
-						bag.add("篮球");
-						you.setAttack(you.getAttack() + 30);
-						System.out.println("已加入背包！");
-						System.out.println("小贴士：本游戏的'格挡'与其字面意思略有差异，若战斗时格挡成功，则让对象的 HP 提升其格挡值，但不会超过其 HP 最大值。");
+			try {
+				Scanner toGLS = new Scanner(System.in);
+				String toGLSR = toGLS.next();
+				if (toGLSR.equals("1")) {
+					getBag(bag, hasCount);
+					Scanner atcxk = new Scanner(System.in);
+					int atglsR = atcxk.nextInt();
+					if (atglsR <= bag.size() + 1 && atglsR >= 1) {
+
+						String theWeapon = bag.get(atglsR - 1);
+						if (bag.contains(theWeapon)) {
+							System.out.println("你选择了 " + theWeapon + "！");
+							System.out.println("战斗开始！");
+							Weapons theWeasum = weasum.get(atglsR + 1);
+							you.setAttack(you.getAttack() + theWeasum.getAttack());
+							try {
+								while (caixukun.getHp() > 0) {
+									if (you.getHp() <= 0) {
+										you.setAlive(false);
+									}
+									if (you.isAlive()) {
+										int isBlock = (int) (Math.random() * 8);
+										if (isBlock % 2 == 0) {
+											System.out.println(you.getName() + " 使用 " + theWeapon + "，对 "
+													+ caixukun.getName() + " 造成了 " + you.getAttack() + " 点伤害！但 "
+													+ caixukun.getName() + " 格挡了一部分伤害！");
+											caixukun.setHp(caixukun.getHp() - you.getAttack() + caixukun.getDefense());
+											if (caixukun.getHp() > caixukun.getMaxHP()) {
+												caixukun.setHp(caixukun.getMaxHP());
+											}
+										} else {
+											System.out.println(you.getName() + " 使用 " + theWeapon + "，对 "
+													+ caixukun.getName() + " 造成了 " + you.getAttack() + " 点伤害！");
+											caixukun.setHp(caixukun.getHp() - you.getAttack());
+										}
+									} else if (!you.isAlive()) {
+										System.err.println("你死了！GAME OVER！");
+										System.exit(0);
+									}
+									if (caixukun.getHp() > 0) {
+										int isBlock = (int) (Math.random() * 8);
+										if (isBlock % 2 == 0) {
+											System.out.println(caixukun.getName() + " 现在的血量是 " + caixukun.getHp());
+											System.out.println(caixukun.getName() + " 对 " + you.getName() + " 造成了 "
+													+ caixukun.getAttack() + " 点伤害！但 " + you.getName() + " 格挡了一部分伤害！");
+											you.setHp(you.getHp() - caixukun.getAttack() + you.getDefense());
+											if (you.getHp() > you.getMaxHP()) {
+												you.setHp(you.getMaxHP());
+											}
+										} else {
+											System.out.println(caixukun.getName() + " 现在的血量是 " + caixukun.getHp());
+											System.out.println(caixukun.getName() + " 对 " + you.getName() + " 造成了 "
+													+ caixukun.getAttack() + " 点伤害！");
+											you.setHp(you.getHp() - caixukun.getAttack());
+										}
+									}
+									System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
+								}
+							} finally {
+								System.out.println(caixukun.getName() + " 被打败了！");
+								caixukun.setAlive(false);
+								System.out.println(caixukun.getName() + " 掉落了武器：" + basketball.getName() + "，攻击力："
+										+ basketball.getAttack() + "，介绍：" + basketball.getIntroduction());
+								bag.add(basketball.getName());
+								you.setAttack(you.getAttack() - theWeasum.getAttack());
+								System.out.println("小贴士：本游戏的'格挡'与其字面意思略有差异，若战斗时格挡成功，则让对象的 HP 提升其格挡值，但不会超过其 HP 最大值。");
+							}
+						} else {
+							x++;
+							System.out.println("你没有做出正确的选择，你逃跑了。");
+						}
+
+					} else {
+						x++;
+						System.out.println("你没有做出正确的选择，你逃跑了。");
 					}
 				} else {
 					x++;
-					System.out.println("你没有做出正确的选择，你逃跑了。");
+					System.out.println("你逃跑了。");
 				}
-			} else {
-				x++;
-				System.out.println("你逃跑了。");
+			} catch (Exception e) {
+				System.out.println("你因为某些原因逃跑了，害。");
 			}
 		} else if (x == guolaoshi.getAtX() && y == guolaoshi.getAtY() && guolaoshi.isAlive()) {
 			System.out.println(
@@ -1092,75 +1148,88 @@ public class Game {
 			System.out.println("你当前的血量是 " + you.getHp());
 			System.out.println("你选择——");
 			System.out.println("1.攻击 2.逃跑");
-			Scanner toGLS = new Scanner(System.in);
-			String toGLSR = toGLS.next();
-			if (toGLSR.equals("1")) {
-				getBag(bag, hasCount);
-				Scanner atcxk = new Scanner(System.in);
-				String atglsR = atcxk.next();
-				if (atglsR.equals("1")) {
-					x++;
-					System.out.println("用匕首肯定是打不过的！你逃跑了！");
-				} else if (atglsR.equals("2") && bag.contains(basketball.getName())) {
-					System.out.println("你选择了篮球！");
-					System.out.println("战斗开始！");
-					try {
-						while (guolaoshi.getHp() > 0) {
-							if (you.getHp() <= 0) {
-								you.setAlive(false);
-							}
-							if (you.isAlive()) {
-								int isBlock = (int) (Math.random() * 8);
-								if (isBlock % 2 == 0) {
-									System.out.println(you.getName() + " 使用 篮球，对 " + guolaoshi.getName() + " 造成了 "
-											+ you.getAttack() + " 点伤害！但 " + guolaoshi.getName() + " 格挡了一部分伤害！");
-									guolaoshi.setHp(guolaoshi.getHp() - you.getAttack() + guolaoshi.getDefense());
-									if (guolaoshi.getHp() > guolaoshi.getMaxHP()) {
-										guolaoshi.setHp(guolaoshi.getMaxHP());
+			try {
+				Scanner toGLS = new Scanner(System.in);
+				String toGLSR = toGLS.next();
+				if (toGLSR.equals("1")) {
+					getBag(bag, hasCount);
+					Scanner atcxk = new Scanner(System.in);
+					int atglsR = atcxk.nextInt();
+					if (atglsR <= bag.size() + 1 && atglsR >= 1) {
+
+						String theWeapon = bag.get(atglsR - 1);
+						if (bag.contains(theWeapon)) {
+							System.out.println("你选择了 " + theWeapon + "！");
+							System.out.println("战斗开始！");
+							Weapons theWeasum = weasum.get(atglsR + 1);
+							you.setAttack(you.getAttack() + theWeasum.getAttack());
+							try {
+								while (guolaoshi.getHp() > 0) {
+									if (you.getHp() <= 0) {
+										you.setAlive(false);
 									}
-								} else {
-									System.out.println(you.getName() + " 使用 篮球，对 " + guolaoshi.getName() + " 造成了 "
-											+ you.getAttack() + " 点伤害！");
-									guolaoshi.setHp(guolaoshi.getHp() - you.getAttack());
-								}
-							} else if (!you.isAlive()) {
-								System.err.println("你死了！GAME OVER！");
-								System.exit(0);
-							}
-							if (guolaoshi.getHp() > 0) {
-								int isBlock = (int) (Math.random() * 8);
-								if (isBlock % 2 == 0) {
-									System.out.println(guolaoshi.getName() + " 现在的血量是 " + guolaoshi.getHp());
-									System.out.println(guolaoshi.getName() + " 对 " + you.getName() + " 造成了 "
-											+ guolaoshi.getAttack() + " 点伤害！但 " + you.getName() + " 格挡了一部分伤害！");
-									you.setHp(you.getHp() - guolaoshi.getAttack() + you.getDefense());
-									if (you.getHp() > you.getMaxHP()) {
-										you.setHp(you.getMaxHP());
+									if (you.isAlive()) {
+										int isBlock = (int) (Math.random() * 8);
+										if (isBlock % 2 == 0) {
+											System.out.println(you.getName() + " 使用 " + theWeapon + "，对 "
+													+ guolaoshi.getName() + " 造成了 " + you.getAttack() + " 点伤害！但 "
+													+ guolaoshi.getName() + " 格挡了一部分伤害！");
+											guolaoshi.setHp(
+													guolaoshi.getHp() - you.getAttack() + guolaoshi.getDefense());
+											if (guolaoshi.getHp() > guolaoshi.getMaxHP()) {
+												guolaoshi.setHp(guolaoshi.getMaxHP());
+											}
+										} else {
+											System.out.println(you.getName() + " 使用 " + theWeapon + "，对 "
+													+ guolaoshi.getName() + " 造成了 " + you.getAttack() + " 点伤害！");
+											guolaoshi.setHp(guolaoshi.getHp() - you.getAttack());
+										}
+									} else if (!you.isAlive()) {
+										System.err.println("你死了！GAME OVER！");
+										System.exit(0);
 									}
-								} else {
-									System.out.println(guolaoshi.getName() + " 现在的血量是 " + guolaoshi.getHp());
-									System.out.println(guolaoshi.getName() + " 对 " + you.getName() + " 造成了 "
-											+ guolaoshi.getAttack() + " 点伤害！");
-									you.setHp(you.getHp() - guolaoshi.getAttack());
+									if (guolaoshi.getHp() > 0) {
+										int isBlock = (int) (Math.random() * 8);
+										if (isBlock % 2 == 0) {
+											System.out.println(guolaoshi.getName() + " 现在的血量是 " + guolaoshi.getHp());
+											System.out.println(guolaoshi.getName() + " 对 " + you.getName() + " 造成了 "
+													+ guolaoshi.getAttack() + " 点伤害！但 " + you.getName() + " 格挡了一部分伤害！");
+											you.setHp(you.getHp() - guolaoshi.getAttack() + you.getDefense());
+											if (you.getHp() > you.getMaxHP()) {
+												you.setHp(you.getMaxHP());
+											}
+										} else {
+											System.out.println(guolaoshi.getName() + " 现在的血量是 " + guolaoshi.getHp());
+											System.out.println(guolaoshi.getName() + " 对 " + you.getName() + " 造成了 "
+													+ guolaoshi.getAttack() + " 点伤害！");
+											you.setHp(you.getHp() - guolaoshi.getAttack());
+										}
+									}
+									System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
 								}
+							} finally {
+								System.out.println(guolaoshi.getName() + " 被打败了！");
+								guolaoshi.setAlive(false);
+								System.out.println(guolaoshi.getName() + " 掉落了武器：" + miHotel.getName() + "，攻击力："
+										+ miHotel.getAttack() + "，介绍：" + miHotel.getIntroduction());
+								bag.add(miHotel.getName());
+								you.setAttack(you.getAttack() - theWeasum.getAttack());
 							}
-							System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
+						} else {
+							x++;
+							System.out.println("你没有做出正确的选择，你逃跑了。");
 						}
-					} finally {
-						System.out.println(guolaoshi.getName() + " 被打败了！");
-						guolaoshi.setAlive(false);
-						System.out.println(guolaoshi.getName() + " 掉落了武器：" + miHotel.getName() + "，攻击力："
-								+ miHotel.getAttack() + "，介绍：" + miHotel.getIntroduction());
-						bag.add(miHotel.getName());
-						you.setAttack(you.getAttack() - dagger.getAttack() + miHotel.getAttack());
+
+					} else {
+						x++;
+						System.out.println("你没有做出正确的选择，你逃跑了。");
 					}
 				} else {
 					x++;
-					System.out.println("你没有做出正确的选择，你逃跑了。");
+					System.out.println("你逃跑了。");
 				}
-			} else {
-				x++;
-				System.out.println("你逃跑了。");
+			} catch (Exception e) {
+				System.out.println("你因为某些原因逃跑了，害。");
 			}
 		} else if (x == dygg.getAtX() && y == dygg.getAtY() && dygg.isAlive()) {
 			System.out.println(
@@ -1328,75 +1397,87 @@ public class Game {
 			System.out.println("你当前的血量是 " + you.getHp());
 			System.out.println("你选择——");
 			System.out.println("1.攻击 2.逃跑");
-			Scanner toGLS = new Scanner(System.in);
-			String toGLSR = toGLS.next();
-			if (toGLSR.equals("1")) {
-				getBag(bag, hasCount);
-				Scanner atcxk = new Scanner(System.in);
-				String atglsR = atcxk.next();
-				if (atglsR.equals("1") || atglsR.equals("2")) {
-					x++;
-					System.out.println("用这些武器肯定是打不过的！所以你逃跑了！");
-				} else if (atglsR.equals("3") && bag.contains(miHotel.getName())) {
-					System.out.println("你选择了迷吼tiao！");
-					System.out.println("战斗开始！");
-					try {
-						while (dygg.getHp() > 0) {
-							if (you.getHp() <= 0) {
-								you.setAlive(false);
-							}
-							if (you.isAlive()) {
-								int isBlock = (int) (Math.random() * 8);
-								if (isBlock % 2 == 0) {
-									System.out.println(you.getName() + " 使用 迷吼tiao，对 " + dygg.getName() + " 造成了 "
-											+ you.getAttack() + " 点伤害！但 " + dygg.getName() + " 格挡了一部分伤害！");
-									dygg.setHp(dygg.getHp() - you.getAttack() + dygg.getDefense());
-									if (dygg.getHp() > dygg.getMaxHP()) {
-										dygg.setHp(dygg.getMaxHP());
+			try {
+				Scanner toGLS = new Scanner(System.in);
+				String toGLSR = toGLS.next();
+				if (toGLSR.equals("1")) {
+					getBag(bag, hasCount);
+					Scanner atcxk = new Scanner(System.in);
+					int atglsR = atcxk.nextInt();
+					if (atglsR <= bag.size() + 1 && atglsR >= 1) {
+
+						String theWeapon = bag.get(atglsR - 1);
+						if (bag.contains(theWeapon)) {
+							System.out.println("你选择了 " + theWeapon + "！");
+							System.out.println("战斗开始！");
+							Weapons theWeasum = weasum.get(atglsR + 1);
+							you.setAttack(you.getAttack() + theWeasum.getAttack());
+							try {
+								while (dygg.getHp() > 0) {
+									if (you.getHp() <= 0) {
+										you.setAlive(false);
 									}
-								} else {
-									System.out.println(you.getName() + " 使用 迷吼tiao，对 " + dygg.getName() + " 造成了 "
-											+ you.getAttack() + " 点伤害！");
-									dygg.setHp(dygg.getHp() - you.getAttack());
-								}
-							} else if (!you.isAlive()) {
-								System.err.println("你死了！GAME OVER！");
-								System.exit(0);
-							}
-							if (dygg.getHp() > 0) {
-								int isBlock = (int) (Math.random() * 8);
-								if (isBlock % 2 == 0) {
-									System.out.println(dygg.getName() + " 现在的血量是 " + dygg.getHp());
-									System.out.println(dygg.getName() + " 对 " + you.getName() + " 造成了 "
-											+ dygg.getAttack() + " 点伤害！但 " + you.getName() + " 格挡了一部分伤害！");
-									you.setHp(you.getHp() - dygg.getAttack() + you.getDefense());
-									if (you.getHp() > you.getMaxHP()) {
-										you.setHp(you.getMaxHP());
+									if (you.isAlive()) {
+										int isBlock = (int) (Math.random() * 8);
+										if (isBlock % 2 == 0) {
+											System.out.println(you.getName() + " 使用 " + theWeapon + "，对 "
+													+ dygg.getName() + " 造成了 " + you.getAttack() + " 点伤害！但 "
+													+ dygg.getName() + " 格挡了一部分伤害！");
+											dygg.setHp(dygg.getHp() - you.getAttack() + dygg.getDefense());
+											if (dygg.getHp() > dygg.getMaxHP()) {
+												dygg.setHp(dygg.getMaxHP());
+											}
+										} else {
+											System.out.println(you.getName() + " 使用 " + theWeapon + "，对 "
+													+ dygg.getName() + " 造成了 " + you.getAttack() + " 点伤害！");
+											dygg.setHp(dygg.getHp() - you.getAttack());
+										}
+									} else if (!you.isAlive()) {
+										System.err.println("你死了！GAME OVER！");
+										System.exit(0);
 									}
-								} else {
-									System.out.println(dygg.getName() + " 现在的血量是 " + dygg.getHp());
-									System.out.println(dygg.getName() + " 对 " + you.getName() + " 造成了 "
-											+ dygg.getAttack() + " 点伤害！");
-									you.setHp(you.getHp() - dygg.getAttack());
+									if (dygg.getHp() > 0) {
+										int isBlock = (int) (Math.random() * 8);
+										if (isBlock % 2 == 0) {
+											System.out.println(dygg.getName() + " 现在的血量是 " + dygg.getHp());
+											System.out.println(dygg.getName() + " 对 " + you.getName() + " 造成了 "
+													+ dygg.getAttack() + " 点伤害！但 " + you.getName() + " 格挡了一部分伤害！");
+											you.setHp(you.getHp() - dygg.getAttack() + you.getDefense());
+											if (you.getHp() > you.getMaxHP()) {
+												you.setHp(you.getMaxHP());
+											}
+										} else {
+											System.out.println(dygg.getName() + " 现在的血量是 " + dygg.getHp());
+											System.out.println(dygg.getName() + " 对 " + you.getName() + " 造成了 "
+													+ dygg.getAttack() + " 点伤害！");
+											you.setHp(you.getHp() - dygg.getAttack());
+										}
+									}
+									System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
 								}
+							} finally {
+								System.out.println(dygg.getName() + " 被打败了！");
+								dygg.setAlive(false);
+								System.out.println(dygg.getName() + " 掉落了武器：" + bigSword.getName() + "，攻击力："
+										+ bigSword.getAttack() + "，介绍：" + bigSword.getIntroduction());
+								bag.add(bigSword.getName());
+								you.setAttack(you.getAttack() + theWeasum.getAttack());
 							}
-							System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
+						} else {
+							x++;
+							System.out.println("你没有做出正确的选择，你逃跑了。");
 						}
-					} finally {
-						System.out.println(dygg.getName() + " 被打败了！");
-						dygg.setAlive(false);
-						System.out.println(dygg.getName() + " 掉落了武器：" + bigSword.getName() + "，攻击力："
-								+ bigSword.getAttack() + "，介绍：" + bigSword.getIntroduction());
-						bag.add(bigSword.getName());
-						you.setAttack(you.getAttack() - miHotel.getAttack() + bigSword.getAttack());
+
+					} else {
+						x++;
+						System.out.println("你没有做出正确的选择，你逃跑了。");
 					}
 				} else {
 					x++;
-					System.out.println("你没有做出正确的选择，你逃跑了。");
+					System.out.println("你逃跑了。");
 				}
-			} else {
-				x++;
-				System.out.println("你逃跑了。");
+			} catch (Exception e) {
+				System.out.println("你因为某些原因而逃跑了，害。");
 			}
 		} else if (x == ylzz.getAtX() && y == ylzz.getAtY() && ylzz.isAlive()) {
 			System.out.println("你遇到了一个怪物！它叫 " + ylzz.getName());
@@ -1523,6 +1604,7 @@ public class Game {
 				System.out.println("战斗开始！");
 				long shadow = 2;
 				System.out.println("影流之主当前分身：" + shadow);
+				you.setAttack(you.getAttack() + gfsStick.getAttack());
 				System.out.println(
 						".o`..\\*...oooo\\***..              ..,`   ...        ...........*[oo\\\\`**..................,oo[.. ...                     .......*******\\o`**[[[oooooooooo]***********.....................................................................********..................................                     \r\n"
 								+ "`,OO..=o*..,ooooooo]*..     .....*o/.  ...             ...*.**...*,oooooo]*************,/o`..,*. ....      ...             .........****`*..******\\oooooooooooooo]******......................    ...........................***...................................................             ..       \r\n"
