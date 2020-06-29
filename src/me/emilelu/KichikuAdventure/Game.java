@@ -52,9 +52,9 @@ public class Game {
 		NPCs author = new NPCs("作者", -2, 4, true);
 
 		// Generate the Monsters on the map
-		Monsters caixukun = new Monsters("蔡徐坤", 120, 120, true, 8, 0, 4, 2);
-		Monsters guolaoshi = new Monsters("郭老师", 250, 250, true, 20, 10, 3, -3);
-		Monsters dygg = new Monsters("冬泳怪鸽", 444, 444, true, 40, 20, -4, -4);
+		Monsters caixukun = new Monsters("蔡徐坤", 66, 66, true, 8, 0, 4, 2);
+		Monsters guolaoshi = new Monsters("郭老师", 121, 121, true, 20, 10, 3, -3);
+		Monsters dygg = new Monsters("冬泳怪鸽", 250, 250, true, 40, 20, -4, -4);
 		Monsters ylzz = new Monsters("影流之主", 2333, 2333, true, 2500, 233, -5, 5);
 
 		// Generate Items
@@ -75,8 +75,8 @@ public class Game {
 
 		/* BGM Configure Start */
 		System.out.println("\n[Music] Loading midi 'GodKnows.mid','black_rose.mid' from " + Music.f);
-		playMusic play = new playMusic();
-		play.start();
+		playMusic play = new playMusic(); // Create an new Object, the class extends Thread.
+		play.start(); // Thread run start()
 		System.out.println("[Music] Loaded 2 midis. Playing now.\n现在，你可以开始移动了。\n");
 		/* BGM Configure End */
 
@@ -1832,67 +1832,6 @@ public class Game {
 					System.out.println("影流之主 灰飞烟灭了！");
 					System.out.println("影流之主 掉落了一封信，你捡了起来，并准备打开时，天旋地转！\n");
 					System.out.println("这里是一个无法用言语描述的空间。");
-					System.out.println(
-							"*****************`*\\,[`,************^ooO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOooOOOOO[*.*=oOO/``.....*,/ooOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@Ooo\\/oooooooooooo[[[[oooooooooooo[[[*ooooooooooooooooo\\/ooooooooooooooooooooooooooooooooooooo\r\n"
-									+ "****************=o**,[`,`********=ooooO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOO[`...*]***........***,]*ooooOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@Oo\\]oooooooooooooooooooooooo]/oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo\r\n"
-									+ "[[[[***=************oo***********,ooooO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOo[`**..]]/`......************oooooOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@Oooooo\\oooooooooooooooo*,oooooooooooooo=ooooooooooooooooooooooooooooooooooooooooooooooooooo\r\n"
-									+ "]]]]***=oooo********oo*******,ooooooO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOo[`..........*.....********oooOoOOO@@@@@@@OOO@@@@@@@@@@@@@@@@@@@@@@@OooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooOoOooOOooooOOOO\r\n"
-									+ "****oooooooo**/ooooo****=o*ooooooooOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOooo[`..........*..*..........***]]OO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooOOoOoooOOoOooooo\r\n"
-									+ "****ooooooooooooooooooooooooooooooOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOO/[`*************..*.*.**.*....*=ooOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooOOoOoooOOoOoOOOO\r\n"
-									+ "************ooooooo^ooooooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOo..*]]oo^**]]]`]]]********.....**/ooOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@OoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooOoooOOOOOOOOOOOO\r\n"
-									+ "************ooooooo^oooooooooooooOO@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOoo*/OOOoo`*****oo/o\\******.......***[[\\oo/[[[,[*......***,[\\oooOOO@@@@@@@@@@@@@@@@@@@@OooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooOOOOOOOOOOOOOOOOOO\r\n"
-									+ "********oooooooooooooooo**=ooooooO@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOooo******************..............***.................****[ooOOO@@@@@@@@@@@@@@@@@@@OooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooOOooOOOOoOOOOOOOOOOoOOOOO\r\n"
-									+ "********oooooooooooooooooooooooooOO@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOoOoooo`****........**.........................................*,\\oOOO@@@@@@@@@@@@@@@@@OoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "oooooooooooooooooooooooo*,ooooooOO@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOo/`******.................   ..........   ...................**,ooOO@@@@@@@@@@@@@@@@@OooooooooooooooooooooooooooooooooooooooooooooooooooOOOOOOOOOOOOooOooOOOOOOOOOOOOOOOOO\r\n"
-									+ "**********,\\ooooooooooooooooooooOO@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOooo`*........                            .................***ooOOO@@@@@@@@@@@@@@@OooooooooooooooooooooooooooooooooooooooooooooooooOOOoOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "*************=ooooooooooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOO@@@@@@@OOOOo^**.....                              .. ....*,/\\]]]]*****`oOOOO@@@@@@@@@@@@@@OoooooooooooooooooooooooooooooooooOooooOOOOOooOOOOOOoOOOOOOoOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "************[***ooooooooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@@OOOO@@@@@@@@OOOOOoo**.....                                ...**]oOO@OOOOOOo]]],ooOOOO@@@@@@@@@@@@@OOoooooooooooooooooooooooooooooooOooOOooOOoooOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "****************ooooooooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@@O@@@@@@@@@OOOoo/**......                                .*****..     .[O@@@OOoooooOOOO@@@@@@@@@@@@OOooooooooooooOooooooooooooooOOoOOOOooOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "****************ooooooooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOo`**.........                               .*.*.  ]@@@\\`  ..,OOOOOOOOoOOOOO@@@@@@@@@@@OOOOOOooOoooOOOoOOOOOOooooooOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ ".....***********ooooooooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOo`**.......                                   ,oo*  =@@@@@@@^.,OOO@OOOOOOOOOOOOO@@@@@@@@@@OOOOOOOoOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "......*************\\ooooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOO^**.........                           .       .=O.   =@@@@@@@@OOOOOOOOOOOOOOOOOOOO@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "....***************ooooooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@@@OOOo*............           .          .............=\\...,O@@@OOO/\\oOOoOOOOOOOOOOOOOOOOO@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "********************=ooooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@OOOO^**..........               ............***,\\]**...*,[\\ooo[`********.***\\oooooOOOOOOOO@@@@@@@OoOooooooOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "********]]]]*****,o*o]/ooooooooooO@@@@@@@@@@@@@@@@@@@@@@@@OOOo*.........                  ............*,/ooooo\\**..*.*.................***,ooooOOOOOO@@@@@OOOooo\\***=OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "**************]]o*]oo]/ooooooooooOO@@@@@@@@@@@@@@@@@@@@@@@OOo^*.................         ..******.....**=oooooo\\`**.......................***[oOOOOOO@@@@@OOooo**`**,oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "*************ooooo[\\o/ooooooooooooOO@@@@@@@@@@@@@@@@@@@@@@OOo*......**^**.***..*]/`.    ..**ooo***.......******[`*...........................**\\ooOOOO@@@@@OOOo**,oo/oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "*************ooooo^\\\\oooooooooooooOO@@@@@@@@@@@@@@@@@@@@@@Oo^***.*,oOOO/`..]]    ..\\\\...*=/ooooo**............................................*,[ooOOO@@@@@OOo*...,[oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "**************ooooooooooooooooooooOO@@@@@@@@@@@@@@@@@@@@@@OO/`**oOOO@O` ,@@@@@@`   =O*..*\\ooooo[*..............................................***\\oOOO@@@@OOo..  ..=OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "**************ooOOOOooooooooooooooOOO@@@@@@@@@@@@@@@@@@@@@OOoo/oOO@@`. .@@@^ @@@OOO^...****[oo^**................................................**ooOOO@@@O`*.     .oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "*************,oooOOOOOooooooooooooooOO@@@@@@@@@@@@@@@@@@@@OOOOOOO@Oo`*..\\@@@@OO[`......***********........****............  .        .............*,oOOO@@@O....    .*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "**************/oooOOOOOOooooooooooooOO@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOo`..........*******,o^*.........*ooo]*..........             ..........*,=OOOO@@^..........=OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "**************=oooOOOOOOOoooooooOOOoOOO@@@@@@@@@@@@@@@@@@@OOOOOO@@@@@OOOo/...................*oooo*........*oOOOOo^*...                  ..........**ooOO@@O^*....**`*,OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "**************=oooOOOOOOOOOOoooOOOOOOOOO@@@@@@@@@@@@@@@@@@OOOOO@@@@OOOo`*....................=OOo^*....  ...,oOOOOOOo\\...                 ...........*\\oOO@@O]]/oooo*=ooOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "********[[****oooOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@OOOOOO@OOOOo`......................=OOO^...      ...,[[*....\\o*.                ...........**oOOO@@OO`*,ooooooOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "o`**,o*=oo[*,/oooOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@OOOOOOOOOo`*......................OOO^..          ......   ...*..              ............**=OOO@O`.****ooOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "oooooo\\oooooooooooOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@OOOOOOOOoo^*.....................=OO/...          ....,]O]]....o*...           ...........***=oOO@O....**,oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "OOooooooooooooooooOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@OOOOOOOo^*..............    ....OOo....           ,@@@@@OO`...o^......      ..............***ooOO@^.....*/OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "OOOoOOOoooooooooOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@OOOOOOo**............        .o/........       .,O@@@@@O^....**............................*/oOOO^.....=OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "OOOOOOOOooooooOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@OOOOo^*...........          =O...../OO\\].......=Ooooooo*****..............................*,/OOOO`..]oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@OOOOo^*.........            =/...=ooO@@@OOo`......*...****................................**=oOOO@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@O@@@@@@@@OOOo`*........             *o*....[oOO/[[[*..............................................*=ooOoOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@OOOOOOOOOOOOO@@@@@@@OOOOOO@@@@@OOOo*.......              ..=o^....*****..................................................*=OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@O@@@@@@@@@@@@\r\n"
-									+ "OOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@OOOOOOOOOOOOO@@@@@@@@o[`OO@@@@@OOOo**.....              ....*********....*.*]o^*.........................................*=oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@O@@@@@@@@@@@@@\r\n"
-									+ "OOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@OOOOOOOOOOOOO@@@@@@@@O*.=OO@@@@@OOo/*......             ....******....******............................................**=OOOO@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@\r\n"
-									+ "OOOOOOOOOOOOOOOOOOOOOOOOOOO@O@@@OOOOOOOOOOOOOO@@@@@@@@\\.*O/\\O@@@OOOo**....             ......***.....****.......*****,/ooooo]***........................**=OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "OOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@OOOOOOOOOOOOOOOO@@@@@@@@^*O/..=@@@OOO\\*.....           .......***.....********]]]\\\\oooooOOOOOOOOOOOOOo...................*=oOOOO@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "OOOOOOOOOOOOOOOOOOO@OOOOOO@@@@@OOOOOOOOOOOOOOOO@@@@@@@@@\\=O.  \\@@OOOO^*.....        .......**oo*...*]/ooooooOOOOOOOOOOOOOOOOOOO@OOOOO\\*................**ooOOO@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "OOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@OOOOOOOOOOOOOOOOO@@@@@@@@@@O\\.  \\@@OOOo^*.....       .....********.*=oooOOOOOOOOOOOOoOOOOOOOOOOOOOOOOOo`*..............**=oOOO@@O@@@@@OOO@OO@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "OOOOOOOOOOOOOOOOO@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOO@@@@@@@@@@O^...@@@OOO^**....      ......********/oOOOOOOOOOOOOooo[[[****[[ooooooo[[[*...............**=/OOO@@@@@OOO@@@OOOOOOO@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "OOOOOOOOOOOO@OO@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOO@@@@@@@@@@@@O**o@@@@OO\\***....     ........**\\,]OOOOOOOOOOOOOo/*....  ...****,****...................**,oOO@@@@@@@@@@@@@@@@@@@@@OOOO@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "OOO@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOO@@@O@@@@@@@@@@O]oOO@@OOo***..................**oOOOOOOOOOOOoo/**.....................................**/OOO@@@@@@@O@O@@@@@@@@@@@@OOOO@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OO@OOOOOOOOOOOO@@@@@@@@@@@@@@@@@OOOO@@@OOo`**....................,[oooOo[[[`*****.....................................*oOOO@@@@@@@@@@O@@@@@@@@@@@@OOOO@@OO@@@@@@OO@@@@@OOO@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@OO@@@@@OOOOOOOO@@@@@@@@@@@@@@@@@@@OOOO@@OOo^*......................*.................             ...................,oOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@@@@@O@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@OO@@@@@@@@OOOO@@@@@@@@@@@@@@@@@@@@@@@@@O^=O@@OOoo*..................................                 ..................*=OOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@@@@@O@@OO@@@@@@@@@@@@@@@@@@@@@@@@@@@@\\O@@@OOOo*.................................                    .............,oOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOo^*................................                    ...........,OOOOOOoooOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOO@@OOOOOOOOO@@OOOO\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOo`*..............................                   ..........,OOOOOOooooooOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@OOO@@@@@@@O@@@@@@@@\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOo]`*...........................                   ........*]oOOOOOOooo[\\o\\OOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOoo]`**.......................               ..........*,OOOOOOOOo^*****ooOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOoo`***..........................  ............**,ooOOOOOOOOOoo*...**,oOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOoo\\]]***...........................******/ooooooOOOOOOOOoo^*...***oOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n"
-									+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOooo]/]\\*******.............**]oooooooo[[[**[ooOOOOOOOoo*......*\\oO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n");
-					System.out.println("↑这是作者的一位朋友");
 					System.out.println(author.getName() + "：“没想到吧，你竟然还会在这种地方见到我~”");
 					System.out.println(author.getName() + "：“我在设计这款屑作之初，就没打算在开头阐明详细内容，现在你通关了，自然而然地可以知道了。”");
 					System.out.println("在遥远的鬼畜大陆，每一个鬼畜素材对象都在这里快乐的生活着。");
@@ -1907,7 +1846,6 @@ public class Game {
 					// 但是有一位朋友给了我些想法，前作就因此合并入本游戏了！可以通过地图越界传送过去！
 					System.out.println(author.getName()
 							+ "：“现在你将会被传送回地图，但是地图上已经没有任何怪物以及NPC了。\n你只有三种选择：1.在地图上漫无目的地游荡 2.输入 exit 退出游戏 3.探索地图范围之外（四个方向有不同的彩蛋）”");
-
 				}
 			}
 		} else {
