@@ -1461,7 +1461,7 @@ public class Game {
 								System.out.println(dygg.getName() + " 掉落了武器：" + bigSword.getName() + "，攻击力："
 										+ bigSword.getAttack() + "，介绍：" + bigSword.getIntroduction());
 								bag.add(bigSword.getName());
-								you.setAttack(you.getAttack() + theWeasum.getAttack());
+								you.setAttack(you.getAttack() - theWeasum.getAttack());
 							}
 						} else {
 							x++;
