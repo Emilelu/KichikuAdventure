@@ -52,17 +52,17 @@ public class Game {
 		NPCs author = new NPCs("作者", -2, 4, true);
 
 		// Generate the Monsters on the map
-		Monsters caixukun = new Monsters("蔡徐坤", 66, 66, true, 8, 0, 4, 2);
-		Monsters guolaoshi = new Monsters("郭老师", 121, 121, true, 20, 10, 3, -3);
-		Monsters dygg = new Monsters("冬泳怪鸽", 250, 250, true, 40, 20, -4, -4);
-		Monsters ylzz = new Monsters("影流之主", 2333, 2333, true, 2500, 233, -5, 5);
+		Monsters caixukun = new Monsters("蔡徐坤", 28, 28, true, 12, 6, 4, 2);
+		Monsters guolaoshi = new Monsters("郭老师", 98, 98, true, 24, 12, 3, -3);
+		Monsters dygg = new Monsters("冬泳怪鸽", 149, 149, true, 32, 16, -4, -4);
+		Monsters ylzz = new Monsters("影流之主", 2333, 2333, true, 233666438, 233, -5, 5);
 
 		// Generate Items
-		Weapons dagger = new Weapons("匕首", 10, "一把普普通通的匕首，可以让攻击力提升 10！");
-		Weapons basketball = new Weapons("篮球", 30, "看起来是一个普通的篮球，但是可以让攻击力提升 30！");
-		Weapons miHotel = new Weapons("迷吼tiao", 100, "外观酷似猕猴桃的炸弹，可以多次使用，可以让攻击力提升 50！");
-		Weapons bigSword = new Weapons("张牙舞爪大宝剑", 123, "外形像狼牙的大宝剑！可以让攻击力提升 123！");
-		Weapons gfsStick = new Weapons("爷爷的拐杖", 188, "爷爷祖传下来的拐杖！可以击退敌人 ? 米，可以让攻击力提升 188！");
+		Weapons dagger = new Weapons("匕首", 20, "一把普普通通的匕首，可以让攻击力提升 20！");
+		Weapons basketball = new Weapons("篮球", 50, "看起来是一个普通的篮球，但是可以让攻击力提升 50！");
+		Weapons miHotel = new Weapons("迷吼tiao", 80, "外观酷似猕猴桃的炸弹，可以多次使用，可以让攻击力提升 80！");
+		Weapons bigSword = new Weapons("张牙舞爪大宝剑", 188, "外形像狼牙的大宝剑！可以让攻击力提升 188！");
+		Weapons gfsStick = new Weapons("爷爷的拐杖", 233, "爷爷祖传下来的拐杖！可以击退敌人 ? 米，可以让攻击力提升 233！");
 
 		// Add all the Weapons Objects into a list for battles
 		List<Weapons> weasum = new ArrayList<Weapons>();
@@ -937,7 +937,7 @@ public class Game {
 						if (bag.contains(theWeapon)) {
 							System.out.println("你选择了 " + theWeapon + "！");
 							System.out.println("战斗开始！");
-							Weapons theWeasum = weasum.get(atglsR + 1);
+							Weapons theWeasum = weasum.get(atglsR - 1);
 							you.setAttack(you.getAttack() + theWeasum.getAttack());
 							try {
 								while (caixukun.getHp() > 0) {
@@ -960,6 +960,7 @@ public class Game {
 											caixukun.setHp(caixukun.getHp() - you.getAttack());
 										}
 									} else if (!you.isAlive()) {
+										System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
 										System.err.println("你死了！GAME OVER！");
 										System.exit(0);
 									}
@@ -979,6 +980,8 @@ public class Game {
 													+ caixukun.getAttack() + " 点伤害！");
 											you.setHp(you.getHp() - caixukun.getAttack());
 										}
+									} else {
+										System.out.println(caixukun.getName() + " 现在的血量是 " + caixukun.getHp());
 									}
 									System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
 								}
@@ -1161,7 +1164,7 @@ public class Game {
 						if (bag.contains(theWeapon)) {
 							System.out.println("你选择了 " + theWeapon + "！");
 							System.out.println("战斗开始！");
-							Weapons theWeasum = weasum.get(atglsR + 1);
+							Weapons theWeasum = weasum.get(atglsR - 1);
 							you.setAttack(you.getAttack() + theWeasum.getAttack());
 							try {
 								while (guolaoshi.getHp() > 0) {
@@ -1185,6 +1188,7 @@ public class Game {
 											guolaoshi.setHp(guolaoshi.getHp() - you.getAttack());
 										}
 									} else if (!you.isAlive()) {
+										System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
 										System.err.println("你死了！GAME OVER！");
 										System.exit(0);
 									}
@@ -1204,6 +1208,8 @@ public class Game {
 													+ guolaoshi.getAttack() + " 点伤害！");
 											you.setHp(you.getHp() - guolaoshi.getAttack());
 										}
+									} else {
+										System.out.println(guolaoshi.getName() + " 现在的血量是 " + guolaoshi.getHp());
 									}
 									System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
 								}
@@ -1410,7 +1416,7 @@ public class Game {
 						if (bag.contains(theWeapon)) {
 							System.out.println("你选择了 " + theWeapon + "！");
 							System.out.println("战斗开始！");
-							Weapons theWeasum = weasum.get(atglsR + 1);
+							Weapons theWeasum = weasum.get(atglsR - 1);
 							you.setAttack(you.getAttack() + theWeasum.getAttack());
 							try {
 								while (dygg.getHp() > 0) {
@@ -1433,6 +1439,7 @@ public class Game {
 											dygg.setHp(dygg.getHp() - you.getAttack());
 										}
 									} else if (!you.isAlive()) {
+										System.out.println(you.getName() + " 现在的血量是 " + you.getHp());
 										System.err.println("你死了！GAME OVER！");
 										System.exit(0);
 									}
@@ -1452,6 +1459,8 @@ public class Game {
 													+ dygg.getAttack() + " 点伤害！");
 											you.setHp(you.getHp() - dygg.getAttack());
 										}
+									} else {
+										System.out.println(dygg.getName() + " 现在的血量是 " + dygg.getHp());
 									}
 									System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
 								}
@@ -1590,7 +1599,7 @@ public class Game {
 								+ "                    .......                  .*`....                    OOOOOOOOOOOO^              .OOOOOOOOOOOOO^.................         .......                  .,[.....                        \r\n"
 								+ "");
 				System.out.println("你正打算做决定的时候，影流之主分身成了三个！并且朝你冲了过来！");
-				int attack = ylzz.getAttack() * 3;
+				long attack = ylzz.getAttack() * 3;
 				System.out.println("你受到了 " + attack + " 点伤害！你被秒杀了！");
 				System.err.println("GAME OVER");
 				System.out.println(you.getName() + " 好像没有探索完全部内容就来螳臂当车了呢...");
@@ -1796,6 +1805,7 @@ public class Game {
 								ylzz.setHp(ylzz.getHp() - you.getAttack());
 							}
 						} else if (!you.isAlive()) {
+							System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
 							System.err.println("你死了！GAME OVER！");
 							System.exit(0);
 						}
@@ -1814,15 +1824,17 @@ public class Game {
 								if (you.getHp() > you.getMaxHP()) {
 									you.setHp(you.getMaxHP());
 								}
+								System.out.println("影流之主：“草！怎么打不动你这个逼崽子！MD，逼爷继续分身！”");
+								shadow = shadow * 2;
+								System.out.println("影流之主当前分身：" + shadow);
 							} else {
 								System.out.println(ylzz.getName() + " 现在的血量是 " + ylzz.getHp());
 								System.out.println(ylzz.getName() + " 使用 " + shadow + " 个分身对 " + you.getName() + " 造成了 "
 										+ ylzz.getAttack() + " 点伤害！");
 								you.setHp(you.getHp() - ylzz.getAttack());
-								System.out.println("影流之主：“草！怎么打不动你这个逼崽子！MD，逼爷继续分身！”");
-								shadow = shadow * 2;
-								System.out.println("影流之主当前分身：" + shadow);
 							}
+						} else {
+							System.out.println(ylzz.getName() + " 当前的血量是 " + ylzz.getHp());
 						}
 						System.out.println(you.getName() + " 当前的血量是 " + you.getHp());
 					}
